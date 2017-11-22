@@ -10,6 +10,12 @@ test.after.always('guaranteed cleanup', t => {
     .del()
 })
 
+test.before('guaranteed cleanup', t => {
+  return knex('books')
+    .del()
+})
+
+
 test('GET:    /books (no results)', t => {
 	return supertest(makeApp(false))
 		.get('/books')
